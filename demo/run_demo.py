@@ -1,6 +1,9 @@
 """
 运行演示：用多Agent代码审查器分析一段有问题的代码
 """
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import json
 from reviewer import ReviewOrchestrator
 
@@ -23,9 +26,9 @@ def main():
 
     # 打印概要
     print(f"审查完成！共发现 {result['total_issues']} 个问题:")
-    print(f"  🔴 严重(Critical): {result['critical']}")
-    print(f"  🟡 警告(Warning) : {result['warning']}")
-    print(f"  🔵 建议(Info)    : {result['info']}")
+    print(f"  [CRITICAL] 严重: {result['critical']}")
+    print(f"  [WARNING]  警告: {result['warning']}")
+    print(f"  [INFO]     建议: {result['info']}")
     print()
 
     # 各Agent耗时
@@ -39,8 +42,7 @@ def main():
     print("问题详情 (按严重程度排序):")
     print("-" * 60)
     for i, issue in enumerate(result["issues"][:15], 1):
-        icon = {"CRITICAL": "🔴", "WARNING": "🟡", "INFO": "🔵"}.get(issue["severity"], "⚪")
-        print(f"\n{i}. {icon} [{issue['severity']}] {issue['rule']} (第{issue['line']}行)")
+        print(f"\n{i}. [{issue['severity']}] {issue['rule']} (line {issue['line']})")
         print(f"   审查方: {issue['agent']}")
         print(f"   问题  : {issue['message']}")
         if issue["suggestion"]:

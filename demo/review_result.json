@@ -1,0 +1,215 @@
+{
+  "file": "sample_bad_code.py",
+  "total_issues": 24,
+  "critical": 6,
+  "warning": 4,
+  "info": 14,
+  "agents": {
+    "SecurityAgent": {
+      "issues_found": 9,
+      "elapsed": 0.002
+    },
+    "PerformanceAgent": {
+      "issues_found": 2,
+      "elapsed": 0.005
+    },
+    "StyleAgent": {
+      "issues_found": 13,
+      "elapsed": 0.004
+    }
+  },
+  "issues": [
+    {
+      "agent": "SecurityAgent",
+      "severity": "CRITICAL",
+      "line": 15,
+      "rule": "SEC-006",
+      "message": "检测到硬编码API密钥",
+      "suggestion": "使用环境变量存储API密钥"
+    },
+    {
+      "agent": "SecurityAgent",
+      "severity": "CRITICAL",
+      "line": 16,
+      "rule": "SEC-005",
+      "message": "检测到硬编码密码",
+      "suggestion": "使用环境变量或配置文件存储敏感信息"
+    },
+    {
+      "agent": "SecurityAgent",
+      "severity": "CRITICAL",
+      "line": 21,
+      "rule": "SEC-004",
+      "message": "使用os.system()执行命令，存在命令注入风险",
+      "suggestion": "改用subprocess.run()并传入参数列表"
+    },
+    {
+      "agent": "SecurityAgent",
+      "severity": "CRITICAL",
+      "line": 22,
+      "rule": "SEC-003",
+      "message": "subprocess使用shell=True，存在命令注入风险",
+      "suggestion": "传入参数列表而非字符串，去掉shell=True"
+    },
+    {
+      "agent": "SecurityAgent",
+      "severity": "CRITICAL",
+      "line": 26,
+      "rule": "SEC-001",
+      "message": "使用了eval()，可能导致代码注入",
+      "suggestion": "改用ast.literal_eval()或json.loads()"
+    },
+    {
+      "agent": "SecurityAgent",
+      "severity": "CRITICAL",
+      "line": 27,
+      "rule": "SEC-002",
+      "message": "使用了exec()，存在任意代码执行风险",
+      "suggestion": "移除exec调用，改用安全的替代方案"
+    },
+    {
+      "agent": "SecurityAgent",
+      "severity": "WARNING",
+      "line": 33,
+      "rule": "SEC-008",
+      "message": "使用pickle反序列化，可能导致远程代码执行",
+      "suggestion": "改用json或安全的序列化方式"
+    },
+    {
+      "agent": "SecurityAgent",
+      "severity": "WARNING",
+      "line": 42,
+      "rule": "SEC-010",
+      "message": "禁用了SSL证书验证，存在中间人攻击风险",
+      "suggestion": "移除verify=False，或配置正确的CA证书"
+    },
+    {
+      "agent": "PerformanceAgent",
+      "severity": "WARNING",
+      "line": 52,
+      "rule": "PERF-001",
+      "message": "检测到嵌套循环（外层第51行），可能导致O(n^2)复杂度",
+      "suggestion": "考虑使用字典/集合优化，或将内层逻辑提取为独立函数"
+    },
+    {
+      "agent": "StyleAgent",
+      "severity": "WARNING",
+      "line": 126,
+      "rule": "STYLE-004",
+      "message": "函数'calculate_price'嵌套深度达到5层，代码难以阅读",
+      "suggestion": "使用早期返回（early return）减少嵌套，或提取子函数"
+    },
+    {
+      "agent": "SecurityAgent",
+      "severity": "INFO",
+      "line": 38,
+      "rule": "SEC-009",
+      "message": "使用MD5哈希，该算法已不安全",
+      "suggestion": "改用SHA-256或bcrypt"
+    },
+    {
+      "agent": "PerformanceAgent",
+      "severity": "INFO",
+      "line": 65,
+      "rule": "PERF-002",
+      "message": "函数'process_all_items'长达56行，可读性和可维护性差",
+      "suggestion": "将大函数拆分为多个职责单一的小函数"
+    },
+    {
+      "agent": "StyleAgent",
+      "severity": "INFO",
+      "line": 65,
+      "rule": "STYLE-001",
+      "message": "行长度880超过120字符",
+      "suggestion": "拆分成多行或提取变量"
+    },
+    {
+      "agent": "StyleAgent",
+      "severity": "INFO",
+      "line": 129,
+      "rule": "STYLE-003",
+      "message": "使用了魔法数字 10，降低代码可读性",
+      "suggestion": "提取为有意义的命名常量"
+    },
+    {
+      "agent": "StyleAgent",
+      "severity": "INFO",
+      "line": 133,
+      "rule": "STYLE-003",
+      "message": "使用了魔法数字 99，降低代码可读性",
+      "suggestion": "提取为有意义的命名常量"
+    },
+    {
+      "agent": "StyleAgent",
+      "severity": "INFO",
+      "line": 134,
+      "rule": "STYLE-003",
+      "message": "使用了魔法数字 99，降低代码可读性",
+      "suggestion": "提取为有意义的命名常量"
+    },
+    {
+      "agent": "StyleAgent",
+      "severity": "INFO",
+      "line": 135,
+      "rule": "STYLE-003",
+      "message": "使用了魔法数字 99，降低代码可读性",
+      "suggestion": "提取为有意义的命名常量"
+    },
+    {
+      "agent": "StyleAgent",
+      "severity": "INFO",
+      "line": 136,
+      "rule": "STYLE-003",
+      "message": "使用了魔法数字 99，降低代码可读性",
+      "suggestion": "提取为有意义的命名常量"
+    },
+    {
+      "agent": "StyleAgent",
+      "severity": "INFO",
+      "line": 139,
+      "rule": "STYLE-003",
+      "message": "使用了魔法数字 50，降低代码可读性",
+      "suggestion": "提取为有意义的命名常量"
+    },
+    {
+      "agent": "StyleAgent",
+      "severity": "INFO",
+      "line": 140,
+      "rule": "STYLE-003",
+      "message": "使用了魔法数字 99，降低代码可读性",
+      "suggestion": "提取为有意义的命名常量"
+    },
+    {
+      "agent": "StyleAgent",
+      "severity": "INFO",
+      "line": 141,
+      "rule": "STYLE-003",
+      "message": "使用了魔法数字 99，降低代码可读性",
+      "suggestion": "提取为有意义的命名常量"
+    },
+    {
+      "agent": "StyleAgent",
+      "severity": "INFO",
+      "line": 143,
+      "rule": "STYLE-003",
+      "message": "使用了魔法数字 99，降低代码可读性",
+      "suggestion": "提取为有意义的命名常量"
+    },
+    {
+      "agent": "StyleAgent",
+      "severity": "INFO",
+      "line": 146,
+      "rule": "STYLE-001",
+      "message": "行长度138超过120字符",
+      "suggestion": "拆分成多行或提取变量"
+    },
+    {
+      "agent": "StyleAgent",
+      "severity": "INFO",
+      "line": 148,
+      "rule": "STYLE-001",
+      "message": "行长度204超过120字符",
+      "suggestion": "拆分成多行或提取变量"
+    }
+  ]
+}
